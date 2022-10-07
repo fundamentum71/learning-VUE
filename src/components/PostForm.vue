@@ -3,15 +3,11 @@
 		<h2>Создание поста</h2>
 		<input v-model="post.title" class="inputClass" type="text" placeholder="Название" />
 		<input v-model="post.body" class="inputClass" type="text" placeholder="Описание" />
-		<MyButton @click="createPost" style="align-self: flex-end"> Создать</MyButton>
+		<my-button @click="createPost" style="align-self: flex-end"> Создать</my-button>
 	</form>
 </template>
 <script>
-import MyButton from './UI/MyButton.vue';
 export default {
-	components: {
-		MyButton,
-	},
 	data() {
 		return {
 			post: {
