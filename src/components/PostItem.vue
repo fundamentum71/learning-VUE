@@ -5,7 +5,9 @@
 			<div><strong>Описание: </strong>{{ post.body }}</div>
 		</div>
 		<div class="post__btns">
-			<my-button class="btn" style="margin-top: 0">Удалить</my-button>
+			<my-button @click="$emit('remove', post)" class="btn" style="margin-top: 0"
+				>Удалить</my-button
+			>
 		</div>
 	</div>
 </template>
@@ -17,6 +19,7 @@ export default {
 			required: true,
 		},
 	},
+	methods: {},
 };
 </script>
 <style scoped>
