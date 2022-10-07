@@ -1,6 +1,6 @@
 <template>
 	<div class="wrapper">
-		<PostForm />
+		<PostForm @create="createPost" />
 		<PostList :posts="posts" />
 	</div>
 </template>
@@ -24,7 +24,9 @@ export default {
 		};
 	},
 	methods: {
-		createPost() {},
+		createPost(post) {
+			this.posts.push(post);
+		},
 	},
 	components: { PostForm, PostList, PostForm },
 };
