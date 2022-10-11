@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h1>Страница с постами</h1>
-		<my-input v-model="searchQuery" placeholder="Поиск..."> </my-input>
+		<my-input v-focus v-model="searchQuery" placeholder="Поиск..."> </my-input>
 		<div class="app__btns">
 			<my-button @click="showDialog"> Создать пост </my-button>
 			<my-selected v-model="selectedSort" :options="sortOptions"></my-selected>
@@ -13,7 +13,7 @@
 
 		<PostList :posts="sortedAndSearchedPosts" @remove="removePost" v-if="!isPostLoading" />
 		<h3 v-else>Идет загрузка...</h3>
-		<div ref="observer" class="observe"></div>
+		<div v-intersection="loadMorePosts" class="observe"></div>
 
 		<!--<div class="page__wrapper">
 			<div
@@ -108,18 +108,18 @@ export default {
 	components: { PostForm, PostList, PostForm },
 	mounted() {
 		this.fetchPosts();
-		let options = {
-			rootMargin: '0px',
-			threshold: 1.0,
-		};
+		//let options = {
+		//	rootMargin: '0px',
+		//	threshold: 1.0,
+		//};
 
-		let callback = (entries, observer) => {
-			if (entries[0].isIntersecting && this.page < this.totalPages) {
-				this.loadMorePosts();
-			}
-		};
-		let observer = new IntersectionObserver(callback, options);
-		observer.observe(this.$refs.observer);
+		//let callback = (entries, observer) => {
+		//	if (entries[0].isIntersecting && this.page < this.totalPages) {
+		//		this.loadMorePosts();
+		//	}
+		//};
+		//let observer = new IntersectionObserver(callback, options);
+		//observer.observe(this.$refs.observer);
 	},
 	computed: {
 		sortedPosts() {
