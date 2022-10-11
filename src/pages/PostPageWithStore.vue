@@ -44,7 +44,6 @@
 <script>
 import PostForm from '@/components/PostForm.vue';
 import PostList from '@/components/PostList.vue';
-import axios from 'axios';
 import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
@@ -56,16 +55,6 @@ export default {
 		return {
 			posts: [],
 			dialogVisible: false,
-			//isPostLoading: false,
-			//selectedSort: '',
-			//searchQuery: '',
-			//page: 1,
-			//limit: 10,
-			//totalPages: 0,
-			//sortOptions: [
-			//	{ value: 'title', name: 'По названию' },
-			//	{ value: 'body', name: 'По описанию' },
-			//],
 		};
 	},
 	methods: {
@@ -96,17 +85,6 @@ export default {
 	components: { PostForm, PostList, PostForm },
 	mounted() {
 		this.fetchPosts();
-		//let options = {
-		//	rootMargin: '0px',
-		//	threshold: 1.0,
-		//};
-		//let callback = (entries, observer) => {
-		//	if (entries[0].isIntersecting && this.page < this.totalPages) {
-		//		this.loadMorePosts();
-		//	}
-		//};
-		//let observer = new IntersectionObserver(callback, options);
-		//observer.observe(this.$refs.observer);
 	},
 	computed: {
 		...mapState({
@@ -124,11 +102,7 @@ export default {
 			sortedAndSearchedPosts: 'post/sortedAndSearchedPosts',
 		}),
 	},
-	watch: {
-		//page() {
-		//	this.fetchPosts();
-		//},
-	},
+	watch: {},
 };
 </script>
 
